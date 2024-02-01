@@ -12,7 +12,7 @@ export default function TopBar({}: Props) {
       <Left>
         <HomeIcon stroke={colors.zinc[400]} width={16} height={16}/>
           <Title withMargin>/ Projects /</Title>
-          <Title active>Home Assignment for Senior FE</Title>
+          <Title active>Home Assignment Solution</Title>
       </Left>
       <Right>
         <Button type="large" active>
