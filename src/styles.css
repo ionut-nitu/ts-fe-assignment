@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  color: #FAFAFA;
+}
+body {
+  background-color: #18181B;
+  margin:0;
+}
+
+.editor-container {
+  max-width: 600px;
+  color: #000;
+  position: relative;
+  font-weight: 400;
+  text-align: left;
+  width: 100%;
+}
+
+.editor-input {
+  resize: none;
+  font-size: 15px;
+  position: relative;
+  tab-size: 1;
+  outline: 0;
+  caret-color: #A78BFA;
+  font-family: Inter;
+}
+
+.editor-input-heading {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.editor-placeholder {
+  color: #A1A1AA;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  font-family: Inter;
+  vertical-align: center;
+  top: 15px;
+  left: 10px;
+  font-size: 15px;
+  user-select: none;
+  display: inline-block;
+  pointer-events: none;
+}
