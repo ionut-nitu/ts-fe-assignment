@@ -4,9 +4,8 @@ import colors from '../../theme/colors'
 import {HomeIcon, AdjustmentsHorizontalIcon, ChatBubbleBottomCenterTextIcon, TableCellsIcon, DocumentTextIcon, ArrowDownTrayIcon} from '@heroicons/react/24/outline'
 import Button from '../common/Button/Button'
 
-type Props = {}
 
-export default function TopBar({}: Props) {
+export default function TopBar() {
   return (
     <Wrapper>
       <Left>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import RichEditor from "../RichEditor/RichEditor";
 import styled from "styled-components";
 
@@ -12,9 +12,9 @@ export default function AssignmentDescription() {
   const { focusedEditor } = useEditorsState();
   return (
     <Wrapper>
-      {details.map((detail: MockData) => (
+      {details.map((detail: MockData, index1:number) => (
         <EditorWrapper key={detail.id} active={focusedEditor?.includes(detail.id)}> 
-          {Object.keys(detail.fields).map((key: string) => (
+          {Object.keys(detail.fields).map((key: string, index2: number) => (
             <RichEditor
               id={detail.id+key}
               key={key}

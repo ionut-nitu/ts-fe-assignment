@@ -3,12 +3,13 @@ import { dateFormat } from '../../../utils/dateHelper'
 import dayjs from 'dayjs'
 import styled from 'styled-components'
 import colors from '../../../theme/colors'
+import { MockData } from '../../../data'
 
 type Props = {
-  data:any
+  data?: MockData
 }
 
-export default function DetailsTab({data}: Props) {
+export default function DetailsTab({ data }: Props) {
   return (
     <>
       <Section>
@@ -17,7 +18,7 @@ export default function DetailsTab({data}: Props) {
             ID
           </Label>
           <Value>
-            {data.id}
+            {data?.id}
           </Value>
         </Row>
         <Row>
@@ -25,7 +26,7 @@ export default function DetailsTab({data}: Props) {
             Created
           </Label>
           <Value>
-          {dayjs(data.createdAt).format(dateFormat)}
+          {dayjs(data?.createdAt).format(dateFormat)}
           </Value>
         </Row>
         <Row>
@@ -33,7 +34,7 @@ export default function DetailsTab({data}: Props) {
             Last edit
           </Label>
           <Value>
-            {dayjs(data.lastModifiedAt).format(dateFormat)}
+            {dayjs(data?.lastModifiedAt).format(dateFormat)}
           </Value>
         </Row>
       </Section>

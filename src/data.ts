@@ -1,10 +1,12 @@
+
+export interface MockDataFields {
+   heading: string;
+   question: string;
+   text: string;
+}
 export interface MockData {
    id:string;
-   fields: {
-      heading: string;
-      question: string;
-      text: string;
-   }
+   fields: MockDataFields;
    uiDisplayInfo: {
       mainFields: string[];
    }

@@ -3,8 +3,9 @@ import styled from "styled-components";
 import colors from '../../theme/colors';
 import Tabs from '../common/Tabs/Tabs';
 import DetailsTab from './components/DetailsTab';
+import {  MockData } from '../../data';
 type Props = {
-  data: any;
+  data?: MockData;
 }
 
 export enum TabTypes {

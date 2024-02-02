@@ -5,7 +5,7 @@ import colors from '../../../theme/colors';
 type Props = {
   children: React.ReactNode;
   active?: boolean;
-  onClick: any;
+  onClick: React.MouseEventHandler<HTMLDivElement> | undefined;
 }
 
 export default function Tab({children, active, onClick}: Props) {

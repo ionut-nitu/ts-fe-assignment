@@ -1,4 +1,4 @@
-import React, {  useRef } from "react";
+import React, {  useEffect, useRef } from "react";
 import {
   EditorState,
   SerializedEditorState,
@@ -31,15 +31,10 @@ type Props = {
   initialState?: string;
   index: number;
   heading?: boolean;
+  isLast?: boolean;
 };
 
-export default function RichEditor({ placeholder,id, initialState, index, heading }: Props) {
-  const editorStateRef = useRef<SerializedEditorState>(initialState as any);
-
-  function handleEditorChange(editorState: EditorState) {
-    const editorStateJSON = editorState.toJSON();
-    editorStateRef.current = editorStateJSON;
-  }
+export default function RichEditor({ placeholder,id, initialState, isLast, index, heading }: Props) {
 
   const initialConfig = {
     namespace: "MyEditor",
@@ -61,7 +56,6 @@ export default function RichEditor({ placeholder,id, initialState, index, headin
         <HistoryPlugin />
         <MyCustomAutoFocusPlugin id={id} index={index}/>
         <EditorStatePlugin initialState={initialState || ""} />
-        <OnChangePlugin onChange={handleEditorChange} />
       </div>
     </LexicalComposer>
   );

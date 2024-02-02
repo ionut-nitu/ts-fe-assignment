@@ -33,7 +33,7 @@ export default function MyCustomAutoFocusPlugin({id, index}: {id: string; index:
     focusedEditor
   }
 
-  const navigateToNextEditor = () => {
+  const navigateToNextEditor = (e: any) => {
     const editors = valuesRef.current?.editors || {};
     const indexMap = valuesRef.current?.indexMap || {};
     const focusedEditor = valuesRef.current?.focusedEditor || null;
@@ -51,6 +51,7 @@ export default function MyCustomAutoFocusPlugin({id, index}: {id: string; index:
               nextEditor?.editor.update(() => {
                 const firstChild = $getRoot().getFirstChild();
                 if(firstChild) {
+                  e.preventDefault();
                   $setSelection(firstChild.selectStart());
                 }
               });
@@ -61,6 +62,7 @@ export default function MyCustomAutoFocusPlugin({id, index}: {id: string; index:
             nextEditor?.editor.update(() => {
               const firstChild = $getRoot().getFirstChild()
               if(firstChild) {
+                e.preventDefault();
                 $setSelection(firstChild.selectStart());
               }
             });
@@ -72,7 +74,7 @@ export default function MyCustomAutoFocusPlugin({id, index}: {id: string; index:
     return false;
   }
 
-  const navigateToPreviousEditor = () => {
+  const navigateToPreviousEditor = (e : any) => {
       const editors = valuesRef.current?.editors || {};
       const indexMap = valuesRef.current?.indexMap || {};
       const focusedEditor = valuesRef.current?.focusedEditor || null;
@@ -80,22 +82,33 @@ export default function MyCustomAutoFocusPlugin({id, index}: {id: string; index:
       const prevEditor = editors[indexMap[currentEditor?.index - 1] || 0];
       const selection = $getSelection();
       if ( selection !== null && $isRangeSelection(selection) && selection.isCollapsed()) {
+
+        // We have a selection
         const anchorNode = selection.anchor.getNode();
         if (anchorNode !== null ) {
+          
+          // We have the anchor node
           if(anchorNode.getTextContentSize() ===  0) {
+
+            // We are on the first line at the start
             prevEditor?.editor.update(() => {
               const lastChild = $getRoot().getLastDescendant()
               if(lastChild) {
+                  e.preventDefault();
                   $setSelection(lastChild.selectEnd());
               } else {
+                e.preventDefault();
                 prevEditor?.editor?.focus();
               }
             });
           } else {
             if(selection.anchor.offset === 0 && $getRoot().getFirstChild() === anchorNode || anchorNode.getParent() === $getRoot().getFirstChild()) {
+
+              // We are on the first line and we check wether the anchor node or the parent is the first child of root
               prevEditor?.editor.update(() => {
                 const lastChild = $getRoot().getLastDescendant()
                 if(lastChild) {
+                    e.preventDefault();
                     $setSelection(lastChild?.selectEnd());
                 }
               });
